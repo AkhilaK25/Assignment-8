@@ -1,0 +1,87 @@
+\documentclass[journal,12pt,twocolumn]{IEEEtran}
+
+\usepackage{setspace}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{mathrsfs}
+\usepackage{enumitem}
+\usepackage{mathtools}
+\usepackage{float}
+\usepackage{caption}
+\usepackage{graphicx}
+\usepackage{babel}
+\usepackage{amsmath}
+
+\usepackage[breaklinks=true]{hyperref}
+
+\usepackage{listings}
+    \usepackage{color}                                            %%
+    \usepackage{array}                                            %%
+    \usepackage{longtable}                                        %%
+    \usepackage{calc}                                             %%
+    \usepackage{multirow}                                         %%
+    \usepackage{hhline}                                           %%
+    \usepackage{ifthen}                                           %%
+    \usepackage{lscape}     
+    \usepackage{amsmath}
+       
+\lstset{
+%language=C,
+frame=single, 
+breaklines=true,
+columns=fullflexible
+}
+\def\inputGnumericTable{}
+\bibliographystyle{IEEEtran}
+
+\newcommand{\question}{\noindent \textbf{Question: }}
+\newcommand{\solution}{\noindent \textbf{Solution: }}
+\providecommand{\cbrak}[1]{\ensuremath{\left\{#1\right\}}}
+\providecommand{\brak}[1]{\ensuremath{\left(#1\right)}}
+\providecommand{\pr}[1]{\ensuremath{\Pr\left(#1\right)}}
+\providecommand{\pd}[1]{\ensuremath{\Pr\left\{#1\right\}}}
+\newcommand{\mydet}[1]{\ensuremath{\begin{vmatrix}#1\end{vmatrix}}}
+\newcommand{\myvec}[1]{\ensuremath{\begin{pmatrix}#1\end{pmatrix}}}
+\newcommand*{\permcomb}[4][0mu]{{{}^{#3}\mkern#1#2_{#4}}}
+\newcommand*{\perm}[1][-3mu]{\permcomb[#1]{P}}
+\newcommand*{\comb}[1][-1mu]{\permcomb[#1]{C}}
+
+\title{Assignment 8}
+\author{AKHILA, CS21BTECH11031}
+
+\begin{document}
+% make the title area
+\maketitle
+\question\\
+We denote by $X_m$ a random variable equal to the number of tosses of a coin until heads shows 
+for the $m$th time. Show that if P\cbrak{h} = p. then $E\cbrak{x_m}=\frac{m}{p}$. \\ 
+
+\solution\\
+
+We know that,
+\begin{align}
+    1+X+X^2+...+X^n...=\frac{1}{1-X} ,|X| < 1
+\end{align}
+Differentiating on both sides we get..
+\begin{align}
+    \implies 1+2X+3X^2+....nX^{n-1}+...=\sum_{k=1}^\infty kX^{k-1}\\=\frac{1}{\brak{1-X}^2}
+\end{align}
+The RV $X_1$ equals to the number of tosses until head shows for the first time.\\Hence, $X_1$ takes the values 1,2,.... with  $\pd{X_1=k}=pq^{k-1}$. \\Hence,
+\begin{align}
+    E\cbrak{X_1}=\sum_{k=1}^\infty k\pd{X_1= k}=\sum_{k=1}^\infty kpq^{k-1}\\
+    =\frac{p}{(1-q)^2}=\frac{1}{p}
+\end{align}
+Starting the count after the first head shows,we conclude that the RV $X_2-X_1$ has the same statistics as the RV $X_1$. Hence, 
+\begin{align}
+   E\cbrak{X_2-X_1}=E\cbrak{X_1}\\
+   E\cbrak{X_2}=2E\cbrak{X_1}=\frac{2}{p}
+\end{align}
+Reasoning similarly,we conclude that 
+\begin{align}
+    E\cbrak{X_n-X_{n-1}}=E\cbrak{X_1}
+\end{align}
+Hence,
+\begin{align}
+    E\cbrak{X_n}=E\cbrak{X_{n-1}}+E\cbrak{X_1}=\frac{n-1}{p}+\frac{1}{p}=\frac{n}{p}
+\end{align}
+\end{document}

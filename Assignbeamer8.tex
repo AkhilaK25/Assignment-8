@@ -1,0 +1,72 @@
+\documentclass{beamer}
+
+\usetheme{CambridgeUS}
+\title{Assignment 8} 
+\author{Akhila Kumbha,CS21BTECH11031}
+\date{\today}
+\logo{\large \LaTeX{}}
+
+
+\providecommand{\brak}[1]{\ensuremath{\left(#1\right)}}
+\providecommand{\pr}[1]{\ensuremath{\Pr\left(#1\right)}}
+\providecommand{\cbrak}[1]{\ensuremath{\left\{#1\right\}}}
+\providecommand{\pd}[1]{\ensuremath{\Pr\left\{#1\right\}}}
+\newcommand{\myvec}[1]{\ensuremath{\begin{pmatrix}#1\end{pmatrix}}}
+\begin{document}
+
+
+\begin{frame}
+    \titlepage 
+\end{frame}
+
+\logo{}
+
+\begin{frame}{Outline}
+    \tableofcontents
+\end{frame}
+
+
+\section{Question}
+\begin{frame}{Question}
+
+We denote by $X_m$ a random variable equal to the number of tosses of a coin until heads shows 
+for the $m$th time. Show that if P\cbrak{h} = p. then $E\cbrak{x_m}=\frac{m}{p}$. \\ 
+
+\end{frame}
+
+
+\section{Solution}
+\begin{frame}{Solution}
+\begin{align}
+    1+X+X^2+...+X^n...=\frac{1}{1-X} ,|X| < 1
+\end{align}
+Differentiating on both sides we get..
+\begin{align}
+    \implies 1+2X+3X^2+....nX^{n-1}+...=\sum_{k=1}^\infty kX^{k-1}\\=\frac{1}{\brak{1-X}^2}
+\end{align}
+\end{frame} 
+
+\begin{frame}
+ The RV $X_1$ equals to the number of tosses until head shows for the first time.\\Hence, $X_1$ takes the values 1,2,.... with  $\pd{X_1=k}=pq^{k-1}$. \\Hence,
+\begin{align}
+    E\cbrak{X_1}=\sum_{k=1}^\infty k\pd{X_1= k}=\sum_{k=1}^\infty kpq^{k-1}\\
+    =\frac{p}{(1-q)^2}=\frac{1}{p}
+\end{align}
+\end{frame}
+\begin{frame}
+Starting the count after the first head shows,we conclude that the RV $X_2-X_1$ has the same statistics as the RV $X_1$. Hence, 
+\begin{align}
+   E\cbrak{X_2-X_1}=E\cbrak{X_1}\\
+   E\cbrak{X_2}=2E\cbrak{X_1}=\frac{2}{p}
+\end{align}
+Reasoning similarly,we conclude that 
+\begin{align}
+    E\cbrak{X_n-X_{n-1}}=E\cbrak{X_1}
+\end{align}
+Hence,
+\begin{align}
+    E\cbrak{X_n}=E\cbrak{X_{n-1}}+E\cbrak{X_1}=\frac{n-1}{p}+\frac{1}{p}=\frac{n}{p}
+\end{align}
+\end{frame}
+
+\end{document}
